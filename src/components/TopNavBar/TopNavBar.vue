@@ -41,6 +41,7 @@
           raised
           class="uppercase"
           label="Статьи"
+          @click="$router.push({ name: 'articles' })"
         />
       </section>
       <Button
