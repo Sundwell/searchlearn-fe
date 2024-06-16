@@ -34,6 +34,7 @@
           raised
           class="uppercase"
           label="Тесты"
+          @click="$router.push({ name: 'tests' })"
         />
         <Button
           rounded

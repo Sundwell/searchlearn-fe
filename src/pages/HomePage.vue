@@ -2,7 +2,7 @@
   <div class="grid grid-cols-2 items-center gap-x-8">
     <RegisterModal v-model:is-visible="isRegisterModalDisplayed" />
     <section class="max-w-xl">
-      <h1 class="mb-12 font-bold">
+      <h1 class="mb-12 font-bold text-4xl">
         Изучай информационный поиск <span class="text-primary">онлайн</span>
       </h1>
       <p class="mb-12">
