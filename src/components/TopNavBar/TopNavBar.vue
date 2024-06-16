@@ -10,46 +10,6 @@
     </p>
   </Dialog>
 
-  <Dialog
-    v-model:visible="isRegisterModalDisplayed"
-    header="Введите данные для регистрации"
-    modal
-    class="max-w-lg w-full"
-  >
-    <section class="grid gap-y-4">
-      <section class="grid gap-y-2">
-        <label for="email">Email</label>
-        <InputText
-          id="email"
-          type="email"
-          placeholder="example@mail.com"
-        />
-      </section>
-      <section class="grid gap-y-2">
-        <label for="password">Пароль</label>
-        <Password
-          id="password"
-          placeholder="****"
-          toggle-mask
-          :feedback="false"
-        />
-      </section>
-      <section class="grid gap-y-2">
-        <label for="password-confirmation">Подтверждение пароля</label>
-        <Password
-          id="password-confirmation"
-          placeholder="****"
-          toggle-mask
-          :feedback="false"
-        />
-      </section>
-    </section>
-
-    <template #footer>
-      <Button label="Регистрация" />
-    </template>
-  </Dialog>
-
   <section class="flex items-center justify-between py-4">
     <RouterLink :to="{ name: 'home' }">
       <img
@@ -57,6 +17,8 @@
         alt="logo"
       >
     </RouterLink>
+
+    <RegisterModal v-model:is-visible="isRegisterModalDisplayed" />
 
     <section class="flex gap-x-8">
       <section class="flex gap-x-2">
@@ -84,6 +46,7 @@
         rounded
         raised
         icon="pi pi-user"
+        @click="isRegisterModalDisplayed = true"
       />
     </section>
   </section>
@@ -91,6 +54,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import RegisterModal from '../RegisterModal.vue'
 
 const isAboutModalDisplayed = ref(false)
 

@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container flex flex-col min-h-screen">
     <TopNavBar />
-    <RouterView />
+    <RouterView class="flex-auto" />
   </div>
 </template>
 
