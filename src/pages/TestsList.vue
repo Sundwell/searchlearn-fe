@@ -14,11 +14,12 @@
           <Column
             header-class="w-20"
           >
-            <template #body>
+            <template #body="{ data }">
               <div class="flex justify-end">
                 <Button
                   size="small"
                   label="Начать"
+                  @click="$router.push({ name: 'test', params: { id: data.id } })"
                 />
               </div>
             </template>

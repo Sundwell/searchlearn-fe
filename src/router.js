@@ -15,6 +15,11 @@ const routes = [
     component: () => import('./pages/TestsList.vue'),
   },
   {
+    path: '/tests/:id',
+    name: 'test',
+    component: () => import('./pages/TestPage.vue'),
+  },
+  {
     path: '/articles',
     name: 'articles',
     component: () => import('./pages/ArticlesList.vue'),
@@ -24,6 +29,7 @@ const routes = [
     name: 'article',
     component: () => import('./pages/ArticlePage.vue'),
   },
+
 ]
 
 const router = createRouter({
