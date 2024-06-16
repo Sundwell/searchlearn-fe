@@ -19,6 +19,11 @@ const routes = [
     name: 'articles',
     component: () => import('./pages/ArticlesList.vue'),
   },
+  {
+    path: '/articles/:id',
+    name: 'article',
+    component: () => import('./pages/ArticlePage.vue'),
+  },
 ]
 
 const router = createRouter({
