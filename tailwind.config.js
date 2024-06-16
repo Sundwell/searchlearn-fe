@@ -195,12 +195,6 @@ export default {
       backgroundColor: {
         mask: 'rgba(0,0,0,.4)',
       },
-      maxWidth: {
-        card: {
-          md: '1200px',
-          sm: '600px',
-        },
-      },
     },
   },
   plugins: [],

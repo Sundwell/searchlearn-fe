@@ -17,6 +17,7 @@ export default antfu({
         },
       }],
       'vue/component-name-in-template-casing': 'off',
+      'vue/html-self-closing': 'off',
     },
   },
   rules: {
