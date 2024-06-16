@@ -1,9 +1,50 @@
 <template>
   <div class="max-w-xl w-full mx-auto">
+    <Dialog
+      v-model:visible="isResultsModalDisplayed"
+      header="Результаты"
+      modal
+      class="max-w-lg w-full"
+    >
+      <div class="flex flex-col">
+        <span class="text-medium text-lg mb-4">{{ test.name }}</span>
+        <div class="flex flex-col gap-y-2">
+          <p>Ваш результат: 2/3</p>
+          <p>На основе анализа ваших ошибок рекомендуем ознакомиться с обучающими материалами:</p>
+          <div class="flex flex-col gap-y-2">
+            <a
+              href="https://google.com"
+              class="text-primary hover:underline"
+            >
+              1. Материал один
+            </a>
+            <a
+              href="https://google.com"
+              class="text-primary hover:underline"
+            >
+              2. Материал два
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <template #footer>
+        <section class="w-full flex justify-between gap-x-2">
+          <Button
+            icon="pi pi-refresh"
+            label="Пройти еще раз"
+          />
+          <Button label="К списку тестов" />
+        </section>
+      </template>
+    </Dialog>
     <Card>
       <template #header>
-        <div class="relative">
-          <span class="absolute top-2 right-2">
+        <div class="pb-2 pt-4 px-6 flex justify-between items-center">
+          <span class="text-lg font-medium">
+            {{ test.name }}
+          </span>
+          <span>
             {{ currentlyDisplayedCount }}/{{ totalQuestions }}
           </span>
         </div>
@@ -56,7 +97,10 @@
             :disabled="currentPage === 0"
             @click="currentPage--"
           />
-          <Button label="Завершить тест" />
+          <Button
+            label="Завершить тест"
+            @click="isResultsModalDisplayed = true"
+          />
           <Button
             icon="pi pi-caret-right"
             :disabled="currentPage === totalPages - 1"
@@ -76,6 +120,7 @@ import {
 
 const test = ref({
   id: 1,
+  name: 'Название теста',
   questions: [
     {
       id: 1,
@@ -142,6 +187,8 @@ const currentlyDisplayedCount = computed(() => {
 
   return perPage.value * (currentPage.value + 1)
 })
+
+const isResultsModalDisplayed = ref(false)
 </script>
 
 <style scoped>
