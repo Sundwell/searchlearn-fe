@@ -40,6 +40,17 @@
           :feedback="false"
         />
       </section>
+      <section
+        v-if="!isLogin"
+        class="flex gap-x-2 items-center"
+      >
+        <Checkbox
+          v-model="form.admin"
+          input-id="admin"
+          binary
+        />
+        <label for="admin">Вы администратор?</label>
+      </section>
       <div>
         <Button
           size="small"
@@ -69,6 +80,7 @@ const form = ref({
   email: '',
   password: '',
   passwordConfirmation: '',
+  admin: false,
 })
 
 const isLogin = ref(false)
@@ -85,6 +97,7 @@ const register = () => {
   const user = api.auth.register({
     email: form.value.email,
     password: form.value.password,
+    admin: form.value.admin,
   })
 
   if (user) {

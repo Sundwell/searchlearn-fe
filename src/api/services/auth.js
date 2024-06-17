@@ -31,6 +31,7 @@ export default () => ({
       createdAt: new Date().toISOString(),
       email: data.email,
       password: data.password,
+      admin: !!data.admin,
     }
 
     localStorage.setItem('user', JSON.stringify(newUser))
