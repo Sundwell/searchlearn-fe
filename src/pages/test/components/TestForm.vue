@@ -216,6 +216,6 @@ const submit = () => {
     createTest()
   }
 
-  router.push({ name: 'tests' })
+  router.push({ name: 'profile' })
 }
 </script>

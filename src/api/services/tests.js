@@ -26,6 +26,8 @@ const update = (testId, test) => {
     ...previousTest,
     ...test,
   })
+
+  localStorage.setItem('tests', JSON.stringify(tests))
 }
 
 const create = (test, userId) => {

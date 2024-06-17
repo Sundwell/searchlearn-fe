@@ -18,7 +18,6 @@ const update = (articleId, article) => {
   const articles = getAll()
 
   const index = articles.findIndex(a => a.id === articleId)
-
   const previousArticle = articles[index]
 
   articles.splice(index, 1, {
