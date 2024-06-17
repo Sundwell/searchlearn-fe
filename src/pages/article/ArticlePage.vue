@@ -1,10 +1,11 @@
 <template>
   <Card
+    v-if="article"
     class="flex-auto"
   >
     <template #title>
       <h1 class="text-center">
-        {{ article.name }}
+        {{ article.title }}
       </h1>
     </template>
 
@@ -33,12 +34,20 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
+import { api } from '../../api/api.js'
 
-const article = ref({
-  id: 1,
-  name: 'Vue.js',
-  content: '<p><strong>Основы информационного поиска</strong></p><p><br></p><h1><strong>Еще <em><u>немного</u></em> </strong><span class="ql-font-serif">текста</span><strong> разного, </strong></h1><ol><li>раз</li><li>два</li><li>три</li></ol>',
-})
+const route = useRoute()
+
+const article = ref()
+
+const fetchArticle = () => {
+  const data = api.articles.getOne(route.params.id)
+
+  article.value = data
+}
+
+fetchArticle()
 </script>
 
 <style scoped>

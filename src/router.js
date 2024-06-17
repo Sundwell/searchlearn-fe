@@ -22,14 +22,23 @@ const routes = [
   {
     path: '/articles',
     name: 'articles',
-    component: () => import('./pages/ArticlesList.vue'),
+    component: () => import('./pages/article/ArticlesList.vue'),
   },
   {
     path: '/articles/:id',
     name: 'article',
-    component: () => import('./pages/ArticlePage.vue'),
+    component: () => import('./pages/article/ArticlePage.vue'),
   },
-
+  {
+    path: '/articles/create',
+    name: 'article-create',
+    component: () => import('./pages/article/ArticleCreate.vue'),
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import('./pages/UserProfile.vue'),
+  },
 ]
 
 const router = createRouter({

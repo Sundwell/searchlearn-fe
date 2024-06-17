@@ -3,6 +3,8 @@
     v-model:visible="isAboutModalDisplayed"
     header="О проекте"
     modal
+    dismissable-mask
+    :draggable="false"
     class="max-w-lg w-full"
   >
     <p class="text-lg">
@@ -47,8 +49,9 @@
       <Button
         rounded
         raised
+        :label="user?.email"
         icon="pi pi-user"
-        @click="isRegisterModalDisplayed = true"
+        @click="goToProfile"
       />
     </section>
   </section>
@@ -56,11 +59,24 @@
 
 <script setup>
 import { ref } from 'vue'
-import RegisterModal from '../RegisterModal.vue'
+import { useRouter } from 'vue-router'
+import RegisterModal from '../AuthModal.vue'
+import { useUserStore } from '../../stores/user.js'
 
 const isAboutModalDisplayed = ref(false)
 
 const isRegisterModalDisplayed = ref(false)
+
+const { user } = useUserStore()
+const router = useRouter()
+
+const goToProfile = () => {
+  if (user.value) {
+    router.push({ name: 'profile' })
+  } else {
+    isRegisterModalDisplayed.value = true
+  }
+}
 </script>
 
 <style scoped>

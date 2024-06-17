@@ -7,9 +7,13 @@
 
       <template #content>
         <DataTable :value="articles">
+          <template #empty>
+            Нет статей
+          </template>
+
           <Column
             header="Название"
-            field="name"
+            field="title"
           />
           <Column
             header-class="w-20"
@@ -32,25 +36,16 @@
 
 <script setup>
 import { ref } from 'vue'
+import { api } from '../../api/api.js'
 
-const articles = ref([
-  {
-    id: 1,
-    name: 'Статья 1',
-  },
-  {
-    id: 2,
-    name: 'Статья 2',
-  },
-  {
-    id: 3,
-    name: 'Статья 3',
-  },
-  {
-    id: 4,
-    name: 'Длинное название статьи, lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-  },
-])
+const articles = ref([])
+
+const fetchArticles = async () => {
+  const data = api.articles.getAll()
+  articles.value = data
+}
+
+fetchArticles()
 </script>
 
 <style scoped>

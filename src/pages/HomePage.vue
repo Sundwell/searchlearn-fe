@@ -1,6 +1,6 @@
 <template>
   <div class="grid grid-cols-2 items-center gap-x-8">
-    <RegisterModal v-model:is-visible="isRegisterModalDisplayed" />
+    <AuthModal v-model:is-visible="isAuthModalDisplayed" />
     <section class="max-w-xl">
       <h1 class="mb-12 font-bold text-4xl">
         Изучай информационный поиск <span class="text-primary">онлайн</span>
@@ -10,7 +10,7 @@
       </p>
       <Button
         label="Начать бесплатно"
-        @click="isRegisterModalDisplayed = true"
+        @click="isAuthModalDisplayed = true"
       />
     </section>
     <section class="max-w-xl">
@@ -31,9 +31,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import RegisterModal from '../components/RegisterModal.vue'
+import AuthModal from '../components/AuthModal.vue'
 
-const isRegisterModalDisplayed = ref(false)
+const isAuthModalDisplayed = ref(false)
 </script>
 
 <style scoped>
