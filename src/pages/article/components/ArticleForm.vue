@@ -43,7 +43,7 @@
         <Button
           label="Назад"
           severity="secondary"
-          @click="$router.push({ name: 'articles' })"
+          @click="$router.push({ name: 'profile' })"
         />
         <Button
           :label="isEditing ? 'Сохранить' : 'Создать'"
@@ -80,7 +80,7 @@ const form = ref({
 })
 
 const loadArticle = () => {
-  const article = api.articles.get(props.id)
+  const article = api.articles.getOne(props.id)
 
   form.value.content = article.content
   form.value.title = article.title
@@ -108,6 +108,6 @@ const submit = () => {
     createArticle()
   }
 
-  router.push({ name: 'articles' })
+  router.push({ name: 'profile' })
 }
 </script>

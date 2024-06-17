@@ -12,12 +12,22 @@ const routes = [
   {
     path: '/tests',
     name: 'tests',
-    component: () => import('./pages/TestsList.vue'),
+    component: () => import('./pages/test/TestsList.vue'),
   },
   {
     path: '/tests/:id',
     name: 'test',
-    component: () => import('./pages/TestPage.vue'),
+    component: () => import('./pages/test/TestPage.vue'),
+  },
+  {
+    path: '/tests/create',
+    name: 'test-create',
+    component: () => import('./pages/test/TestCreate.vue'),
+  },
+  {
+    path: '/tests/:id/edit',
+    name: 'test-edit',
+    component: () => import('./pages/test/TestEdit.vue'),
   },
   {
     path: '/articles',
@@ -28,6 +38,11 @@ const routes = [
     path: '/articles/:id',
     name: 'article',
     component: () => import('./pages/article/ArticlePage.vue'),
+  },
+  {
+    path: '/articles/edit/:id',
+    name: 'article-edit',
+    component: () => import('./pages/article/ArticleEdit.vue'),
   },
   {
     path: '/articles/create',

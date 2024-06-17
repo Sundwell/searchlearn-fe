@@ -3,6 +3,22 @@ const getUsers = () => {
 }
 
 export default () => ({
+  getAllUsers: () => getUsers(),
+  patch: (userId, data) => {
+    const users = getUsers()
+
+    const index = users.findIndex(user => user.id === userId)
+    const previousUser = users[index]
+
+    users.splice(index, 1, {
+      ...previousUser,
+      ...data,
+    })
+
+    localStorage.setItem('users', JSON.stringify(users))
+
+    return users.find(user => user.id === userId)
+  },
   register: (data) => {
     const users = getUsers()
 
@@ -25,7 +41,15 @@ export default () => ({
 
     return newUser
   },
-  getCurrentUser: () => JSON.parse(localStorage.getItem('user') || 'null') || null,
+  getCurrentUser: () => {
+    const cached = JSON.parse(localStorage.getItem('user') || 'null') || null
+
+    if (cached) {
+      const users = getUsers()
+
+      return users.find(user => user.id === cached.id)
+    }
+  },
   login: (email, password) => {
     const users = getUsers()
 

@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import ArticleForm from './component/ArticleForm.vue'
+import ArticleForm from './components/ArticleForm.vue'
 </script>

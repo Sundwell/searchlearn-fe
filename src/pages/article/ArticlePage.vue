@@ -4,9 +4,18 @@
     class="flex-auto"
   >
     <template #title>
-      <h1 class="text-center">
-        {{ article.title }}
-      </h1>
+      <section class="flex flex-col gap-y-2">
+        <h1 class="text-center">
+          {{ article.title }}
+        </h1>
+        <div class="flex flex-wrap gap-2">
+          <Tag
+            v-for="tag in article.tags"
+            :key="tag"
+            :value="`#${tag}`"
+          />
+        </div>
+      </section>
     </template>
 
     <template #content>
