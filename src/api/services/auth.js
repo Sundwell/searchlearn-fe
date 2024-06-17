@@ -51,7 +51,7 @@ export default () => ({
       return users.find(user => user.id === cached.id)
     }
   },
-  login: (email, password) => {
+  login: ({ email, password }) => {
     const users = getUsers()
 
     const user = users.find(user => user.email === email && user.password === password)
